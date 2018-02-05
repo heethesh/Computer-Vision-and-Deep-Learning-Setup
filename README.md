@@ -209,6 +209,7 @@ You can make a backup of this .whl file.
 	cp /tmp/tensorflow_pkg/tensorflow <TAB> (*.whl) <BACKUP_LOCATION>
 
 Verify that TensorFlow is using the GPU for computation by running the following python script.
+
 **NOTE: Running a script from the */tensorflow* root directory might show some errors. Change to any other directory and run the script.**
 
 	import tensorflow as tf
@@ -237,13 +238,13 @@ Check installation of frameworks:
 	python
 	>>> import numpy
 	>>> numpy.__version__
-	>>> import theano
-	>>> theano.__version__
 	>>> import tensorflow
 	>>> tensorflow.__version__
 	>>> import keras
 	>>> Using TensorFlow backend.
 	>>> keras.__version__
+	>>> import theano
+	>>> theano.__version__
 
 ## 6. Install OpenCV 3.4.0 + Contrib
 First we will install the dependencies:
@@ -310,7 +311,7 @@ Check installation of OpenCV:
 
 	python
 	>>> import cv2
-	>>> numpy.__cv2__
+	>>> cv2.__version__
 	
 Retain the build folder in the same location. This will be required if you want to uninstall OpenCV or upgrade in the future or else the uninstall process might become very tedious.
 
