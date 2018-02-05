@@ -1,4 +1,4 @@
-#Computer Vision  and Deep Learning Setup
+# Computer Vision  and Deep Learning Setup
 
 Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, Theano and Keras, OpenCV and NVIDIA drivers, CUDA and cuDNN libraries on Ubuntu 16.04.3 and 17.10.
 
@@ -52,7 +52,7 @@ Download the CUDA driver from the official nvidia website [official nvidia websi
 
 **NOTE: The following instructions will also work for Ubuntu 17.10.**
 
-![](/images/img1.png) 
+![](https://github.com/heethesh/Install-TensorFlow-OpenCV-GPU-Ubuntu-17.10/blob/master/images/img1.png) 
 
 After downloading the file, go to the folder where you have downloaded the file and run the following commands from the terminal to install the CUDA drivers. Please make sure that the filename used in the command below is the same as the downloaded file.
 
@@ -71,7 +71,7 @@ CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural
 
 Go to official cuDNN website [official cuDNN website](https://developer.nvidia.com/cudnn)  and fill out the form for downloading the cuDNN library. You should download the “cuDNN v6.0 Library for Linux” under CUDA 8.0 from the options.
 
-![](/images/img2.png) 
+![](https://github.com/heethesh/Install-TensorFlow-OpenCV-GPU-Ubuntu-17.10/blob/master/images/img2.png) 
 
 Now, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following.
 
@@ -113,7 +113,7 @@ Now, we can install all the deep learning frameworks:
 
 	pip install numpy scipy matplotlib scikit-image scikit-learn ipython protobuf jupyter
 	 
-### Building TensorFlow from source
+### Building TensorFlow from Source
 
 First verify that you are using Python 2.7 as default and pip for Python 2.7. Upgrade pip to latest version if you see a warning message. Also verify that you are using numpy version >= 1.14
 
