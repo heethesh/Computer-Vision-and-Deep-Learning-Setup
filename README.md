@@ -177,11 +177,15 @@ The root of the *tensorflow* folder contains a bash script named configure. This
 	cd ~/tensorflow
 	./configure
 	
-Select Python 2.7, no to all additional packages, gcc as compiler (GCC 5.4).
-For CUDA, enter 8.0
-For cuDNN, enter 6
-Enter your GPU Compute Capability (Eg: 3.0 or 6.1). Find yout GPU Compute Capability from [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported).
-Use nvcc as the CUDA compiler.
+>Select Python 2.7, no to all additional packages, gcc as compiler (GCC 5.4).
+>
+>For CUDA, enter 8.0
+>
+>For cuDNN, enter 6
+>
+>Enter your GPU Compute Capability (Eg: 3.0 or 6.1). Find yout GPU Compute Capability from [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported).
+>
+>Use nvcc as the CUDA compiler.
 
 Finally, build the pip package:
 	
