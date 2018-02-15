@@ -76,14 +76,14 @@ Go to official cuDNN website [official cuDNN website](https://developer.nvidia.c
 Now, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following.
 
 	tar xvf cudnn-8.0-linux-x64-v6.0.tgz
-	sudo cp -P cuda/lib64/* /usr/local/cuda/lib64/
-	sudo cp cuda/include/* /usr/local/cuda/include/
+	sudo cp -P cuda/lib64/* /usr/local/cuda-8.0/lib64/
+	sudo cp cuda/include/* /usr/local/cuda-8.0/include/
 	
 Next, update the paths for CUDA library and executables.
 
-	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"' >> ~/.bashrc
-	echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bashrc
-	echo 'export PATH="/usr/local/cuda/bin:$PATH"' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64"' >> ~/.bashrc
+	echo 'export CUDA_HOME=/usr/local/cuda-8.0' >> ~/.bashrc
+	echo 'export PATH="/usr/local/cuda-8.0/bin:$PATH"' >> ~/.bashrc
 	source ~/.bashrc
 	
 To check installation of cuDNN, run this in your terminal:
@@ -195,6 +195,10 @@ The build might take upto an hour. If it fails to build, you must clean your bui
 
 	bazel clean --expunge
 	./configure
+
+The bazel build command builds a script named build_pip_package. Running this script as follows will build a .whl file within the /tmp/tensorflow_pkg directory:
+
+	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 	
 Once the build is complete, invoke pip install to install that pip package. The filename of the .whl file depends on your platform. Use tab completion to find your package.
 
