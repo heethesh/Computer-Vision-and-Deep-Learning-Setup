@@ -127,7 +127,7 @@ Upgrade numpy to the latest version:
 	 
 ### Building TensorFlow from Source
 
-**NOTE: If you already have a built *.whl file, skip to next sub-section to install TensorFlow directly using PIP**
+**NOTE: If you already have a built &ast;.whl file, skip to next sub-section to install TensorFlow directly using PIP**
 
 First verify that you are using Python 2.7 as default and pip for Python 2.7. Upgrade pip to latest version if you see a warning message. Also verify that you are using numpy version >= 1.14
 
