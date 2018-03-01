@@ -298,6 +298,8 @@ Download OpenCV-contrib 3.4.0:
 	git checkout 3.4.0
 	cd ..
 	
+**NOTE: Keep the build folder in the same location as it may be required in future to upgrade or uninstall OpenCV**
+
 Configure and generate the MakeFile in */opencv/build* folder (make sure to specify paths to downloaded OpenCV-contrib modules correctly):
 
 	cd opencv
@@ -323,7 +325,7 @@ Configure and generate the MakeFile in */opencv/build* folder (make sure to spec
 	
 Compile and install:
 
-	make -j4 
+	make -j$(nproc)
 	sudo make install
 	sudo ldconfig
 	
