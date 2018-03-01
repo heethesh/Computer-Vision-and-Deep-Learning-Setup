@@ -152,7 +152,7 @@ Now we will download the TensorFlow repository from GitHub in the */home* folder
 	
 You must also install libcupti which for Cuda Toolkit >= 8.0 you do via:
 	
-	sudo apt-get install cuda-command-line-tools 
+	sudo apt-get install cuda-command-line-tools-8-0 
 	
 For Cuda Toolkit <= 7.5, you install libcupti-dev by invoking the following command:
 	
