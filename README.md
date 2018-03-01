@@ -58,13 +58,23 @@ After downloading the file, go to the folder where you have downloaded the file 
 
 	sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 	sudo apt-get update
-	sudo apt-get install -y cuda-8.0
+	sudo apt-get install -y cuda-8-0
 
 Now, you have to install the CUDA performance update patch available from the same webpage where you downloaded the CUDA Base Installer.
 	
 	sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb
 	sudo apt-get update
 
+Next, update the paths for CUDA library and executables.
+
+	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64"' >> ~/.bashrc
+	echo 'export CUDA_HOME=/usr/local/cuda-8.0' >> ~/.bashrc
+	echo 'export PATH="/usr/local/cuda-8.0/bin:$PATH"' >> ~/.bashrc
+	source ~/.bashrc
+	
+You can verify the installation of CUDA 8.0 by running:
+
+	nvcc -V
 	
 ## 4. Install cuDNN
 CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural network computations. It is written using the CUDA API.
@@ -78,13 +88,7 @@ Now, go to the folder where you have downloaded the “.tgz” file and from the
 	tar xvf cudnn-8.0-linux-x64-v6.0.tgz
 	sudo cp -P cuda/lib64/* /usr/local/cuda-8.0/lib64/
 	sudo cp cuda/include/* /usr/local/cuda-8.0/include/
-	
-Next, update the paths for CUDA library and executables.
-
-	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64"' >> ~/.bashrc
-	echo 'export CUDA_HOME=/usr/local/cuda-8.0' >> ~/.bashrc
-	echo 'export PATH="/usr/local/cuda-8.0/bin:$PATH"' >> ~/.bashrc
-	source ~/.bashrc
+	sudo chmod a+r /usr/local/cuda-8.0/include/cudnn.h
 	
 To check installation of cuDNN, run this in your terminal:
 	
@@ -108,10 +112,14 @@ Next, we install python 2 and 3 along with other important packages like boost, 
 	 
 	sudo apt-get install -y python-dev python-pip python-nose python-numpy python-scipy python-wheel
 	sudo apt-get install -y python3-dev python3-pip python3-nose python3-numpy python3-scipy python3-wheel
+	
+Before we use pip, make sure you have the latest version of pip.
+
+	sudo pip install --upgrade pip
 
 Now, we can install all the deep learning frameworks:
 
-	pip install numpy scipy matplotlib scikit-image scikit-learn ipython protobuf jupyter
+	sudo pip install numpy scipy matplotlib scikit-image scikit-learn ipython protobuf jupyter
 	 
 ### Building TensorFlow from Source
 
