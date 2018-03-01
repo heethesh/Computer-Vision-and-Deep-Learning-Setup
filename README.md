@@ -120,8 +120,14 @@ Before we use pip, make sure you have the latest version of pip.
 Now, we can install all the deep learning frameworks:
 
 	sudo pip install numpy scipy matplotlib scikit-image scikit-learn ipython protobuf jupyter
+	
+Upgrade numpy to the latest version:
+
+	sudo pip install --upgrade numpy
 	 
 ### Building TensorFlow from Source
+
+**NOTE: If you already have a built *.whl file, skip to next sub-section to install TensorFlow directly using PIP**
 
 First verify that you are using Python 2.7 as default and pip for Python 2.7. Upgrade pip to latest version if you see a warning message. Also verify that you are using numpy version >= 1.14
 
@@ -207,7 +213,9 @@ The build might take upto an hour. If it fails to build, you must clean your bui
 The bazel build command builds a script named build_pip_package. Running this script as follows will build a .whl file within the /tmp/tensorflow_pkg directory:
 
 	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
-	
+
+### Installing TensorFlow using PIP
+
 Once the build is complete, invoke pip install to install that pip package. The filename of the .whl file depends on your platform. Use tab completion to find your package.
 
 	sudo pip install /tmp/tensorflow_pkg/tensorflow <TAB>
@@ -242,8 +250,8 @@ If you have a gpu and can use it, you will see the result. Otherwise you will se
 
 Now, install keras for TensorFlow and Theano
  
-	pip install keras
-	pip install Theano	
+	sudo pip install keras
+	sudo pip install Theano	
 
 Check installation of frameworks:
 
