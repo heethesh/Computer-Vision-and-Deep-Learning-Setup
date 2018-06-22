@@ -1,6 +1,6 @@
 # Computer Vision  and Deep Learning Setup
 
-Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, Theano and Keras, OpenCV and NVIDIA drivers, CUDA and cuDNN libraries on Ubuntu 16.04.3 and 17.10.
+Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, Darknet for YOLO, Theano and Keras, OpenCV and NVIDIA drivers, CUDA and cuDNN libraries on Ubuntu 16.04.3, 17.10 and 18.04.
 
 
 ## 1. Install Prerequisites
@@ -13,9 +13,9 @@ Next, we will install some basic packages which we might need during the install
 
 	sudo apt-get install -y build-essential cmake gfortran git pkg-config 
 
-**NOTE: The following instructions are only for Ubuntu 17.10. Skip to the next section if you have Ubuntu 16.04**
+**NOTE: The following instructions are only for Ubuntu 17 and 18.04. Skip to the next section if you have Ubuntu 16.04**
 	
-The defualt *gcc* vesrion on Ubuntu 17.10 is *gcc-7*. However, when we build OpenCV from source with CUDA support, it requires *gcc-5*. 
+The defualt *gcc* vesrion on Ubuntu 17 and 18.04 is *gcc-7*. However, when we build OpenCV from source with CUDA support, it requires *gcc-5*. 
 
 	sudo apt-get install gcc-5 g++-5
 	
@@ -50,7 +50,7 @@ CUDA (Compute Unified Device Architecture) is a parallel computing platform and 
 
 Download the CUDA driver from the official nvidia website [official nvidia website](https://developer.nvidia.com/cuda-80-ga2-download-archive) . We recommend you download the *deb (local)* version from Installer type as shown in the screenshot below.
 
-**NOTE: The following instructions will also work for Ubuntu 17.10.**
+**NOTE: The following instructions will also work for Ubuntu 17 and 18.04.**
 
 ![](https://github.com/heethesh/Install-TensorFlow-OpenCV-GPU-Ubuntu-17.10/blob/master/images/img1.png) 
 
@@ -76,6 +76,8 @@ You can verify the installation of CUDA 8.0 by running:
 
 	nvcc -V
 	
+#### NOTE: The procedure for installing CUDA 9.0 will be similiar as above.
+	
 ## 4. Install cuDNN
 CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural network computations. It is written using the CUDA API.
 
@@ -96,8 +98,9 @@ To check installation of cuDNN, run this in your terminal:
 	function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
 	check libcudnn 
 	
+#### NOTE: The procedure for setting up CuDNN 7.0 will be similiar as above.
 
-## 5. Install Deep Learning Frameworks
+## 5. Python and Other Dependencies
 Now, we install Tensorflow, Keras and Theano along with other standard Python ML libraries like numpy, scipy, sklearn etc.
 
 Install dependencies of deep learning frameworks:
@@ -117,7 +120,8 @@ Before we use pip, make sure you have the latest version of pip.
 
 	sudo pip install --upgrade pip
 
-Now, we can install all the deep learning frameworks:
+## 6. Install Deep Learning Frameworks
+Now, we can install all the required python packages for deep learning frameworks:
 
 	sudo pip install numpy scipy matplotlib scikit-image scikit-learn ipython protobuf jupyter
 	
@@ -141,9 +145,9 @@ You should be able to see the following output:
 
 	>>> Python 2.7.14 (default, Sep 23 2017, 22:06:14) 
 	>>> '1.14.0'	
-	pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)
+	pip <version> from /usr/lib/python2.7/dist-packages (python 2.7)
 
-Now we will download the TensorFlow repository from GitHub in the */home* folder.
+Now we will download the TensorFlow repository from GitHub in the */home* folder. Checkout to the latest version of TensorFlow (`r1.5` is used here).
 
 	cd ~
 	git clone https://github.com/tensorflow/tensorflow.git
@@ -169,9 +173,9 @@ Next we need to install Bazel
 	sudo apt-get update && sudo apt-get install bazel
 	sudo apt-get upgrade bazel
 	
-	wget https://github.com/bazelbuild/bazel/releases/download/0.10.0/bazel-0.10.0-installer-linux-x86_64.sh
-	chmod +x bazel-0.10.0-installer-linux-x86_64.sh
-	./bazel-0.10.0-installer-linux-x86_64.sh --user
+	wget https://github.com/bazelbuild/bazel/releases/download/0.11.0/bazel-0.11.0-installer-linux-x86_64.sh
+	chmod +x bazel-0.11.0-installer-linux-x86_64.sh
+	./bazel-0.11.0-installer-linux-x86_64.sh --user
 	
 	export PATH="$PATH:$HOME/bin"
 	source ~/.bashrc
@@ -190,7 +194,9 @@ The root of the *tensorflow* folder contains a bash script named configure. This
 
 	cd ~/tensorflow
 	./configure
-	
+
+#### NOTE: Enter the your correct CUDA and CuDNN version below. CUDA 8.0 and CuDNN 6 is used here.
+
 >Select Python 2.7, no to all additional packages, gcc as compiler (GCC 5.4).
 >
 >For CUDA, enter 8.0
@@ -230,7 +236,7 @@ You can make a backup of this .whl file.
 
 Verify that TensorFlow is using the GPU for computation by running the following python script.
 
-**NOTE: Running a script from the */tensorflow* root directory might show some errors. Change to any other directory and run the script.**
+**NOTE: Running a script from the */tensorflow* root directory might show some errors. Change to any other directory and run the following python script.**
 
 	import tensorflow as tf
 	with tf.device('/gpu:0'):
@@ -266,7 +272,7 @@ Check installation of frameworks:
 	>>> import theano
 	>>> theano.__version__
 
-## 6. Install OpenCV 3.4.0 + Contrib
+## 7. Install OpenCV and Contrib Modules
 First we will install the dependencies:
 
 	sudo apt-get remove -y x264 libx264-dev
@@ -283,7 +289,9 @@ First we will install the dependencies:
 	sudo apt-get install -y libvorbis-dev libxvidcore-dev
 	sudo apt-get install -y libopencore-amrnb-dev libopencore-amrwb-dev
 	sudo apt-get install -y x264 v4l-utils
-	
+
+#### NOTE: Checkout to the latest version of OpenCV. 3.4.0 is used here.
+
 Download OpenCV 3.4.0:
 
 	git clone https://github.com/opencv/opencv.git
@@ -298,7 +306,7 @@ Download OpenCV-contrib 3.4.0:
 	git checkout 3.4.0
 	cd ..
 	
-**NOTE: Keep the build folder in the same location as it may be required in future to upgrade or uninstall OpenCV**
+#### NOTE: Keep the build folder in the same location as it may be required in future to upgrade or uninstall OpenCV
 
 Configure and generate the MakeFile in */opencv/build* folder (make sure to specify paths to downloaded OpenCV-contrib modules correctly):
 
@@ -318,7 +326,7 @@ Configure and generate the MakeFile in */opencv/build* folder (make sure to spec
 	      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
 	      -D BUILD_EXAMPLES=ON ..
 	      
-**NOTE: If you are using Ubuntu 17.10, you must add the following flags as well.**      
+#### NOTE: If you are using Ubuntu 17 or 18.04, you must add the following flags as well.
 
 	      -D CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-5 \
 	      -D CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-5 \
@@ -341,3 +349,22 @@ To uninstall OpenCV:
 
 	cd /opencv/build
 	sudo make uninstall
+	
+## 8. Install Darknet for YOLO
+
+First clone the Darknet git repository.
+
+	git clone https://github.com/pjreddie/darknet.git
+
+Now, to compile Darknet with CUDA, CuDNN and OpenCV support, open the `Makefile` from the `darknet` folder and make the changes as following in the beginning of this file.
+
+	GPU=1
+	CUDNN=1
+	OPENCV=1
+	
+Once done, just run make from the darknet folder.
+
+	cd darknet
+	make
+
+Refer [here](https://pjreddie.com/darknet/yolo/) for more details on running YOLO and training the network.
