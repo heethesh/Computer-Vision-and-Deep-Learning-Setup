@@ -38,59 +38,63 @@ Now, to fix the CXX and CC environment variable systemwide, you need to put the 
 ## 2. Install NVIDIA Driver for your GPU
 The NVIDIA drivers will be automatically detected by Ubuntu in *Software and Updates* under *Additional drivers*. Select the driver for your GPU and click apply changes and reboot your system. *You may also select and apply Intel Microcode drivers in this window.*
 
-*At the time of writing this document, the latest stable driver version is 384.111*
+*At the time of writing this document, the latest stable driver version is 396*
 
 Run the following command to check whether the driver has installed successfully by running NVIDIA’s System Management Interface (*nvidia-smi*). It is a tool used for monitoring the state of the GPU.
 
 	nvidia-smi
 	
-
+	
 ## 3. Install CUDA
 CUDA (Compute Unified Device Architecture) is a parallel computing platform and API developed by NVIDIA which utilizes the parallel computing capabilities of the GPUs. In order to use the graphics card, we need to have CUDA drivers installed on our system.
 
-Download the CUDA driver from the official nvidia website [official nvidia website](https://developer.nvidia.com/cuda-80-ga2-download-archive) . We recommend you download the *deb (local)* version from Installer type as shown in the screenshot below.
+Download the CUDA driver from the official nvidia website [official nvidia website](https://developer.nvidia.com/cuda-92-download-archive). We recommend you download the *deb (local)* version from Installer type as shown in the screenshot below.
 
+*At the time of writing this document, the latest stable version is CUDA 9.2*
 **NOTE: The following instructions will also work for Ubuntu 17 and 18.04.**
 
-![](https://github.com/heethesh/Install-TensorFlow-OpenCV-GPU-Ubuntu-17.10/blob/master/images/img1.png) 
+![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img1.png) 
 
 After downloading the file, go to the folder where you have downloaded the file and run the following commands from the terminal to install the CUDA drivers. Please make sure that the filename used in the command below is the same as the downloaded file.
 
-	sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+	sudo dpkg -i cuda-repo-ubuntu1604-9-2-local_9.2.148-1_amd64.deb
+	sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub
 	sudo apt-get update
-	sudo apt-get install -y cuda-8-0
+	sudo apt-get install -y cuda-9
 
 Now, you have to install the CUDA performance update patch available from the same webpage where you downloaded the CUDA Base Installer.
 	
-	sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-cublas-performance-update_8.0.61-1_amd64.deb
+	sudo dpkg -i cuda-repo-ubuntu1604-9-2-148-local-patch-1_1.0-1_amd64
 	sudo apt-get update
 
 Next, update the paths for CUDA library and executables.
 
-	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/extras/CUPTI/lib64"' >> ~/.bashrc
-	echo 'export CUDA_HOME=/usr/local/cuda-8.0' >> ~/.bashrc
-	echo 'export PATH="/usr/local/cuda-8.0/bin:$PATH"' >> ~/.bashrc
+	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-9.2/lib64:/usr/local/cuda-9.2/extras/CUPTI/lib64"' >> ~/.bashrc
+	echo 'export CUDA_HOME=/usr/local/cuda-9.2' >> ~/.bashrc
+	echo 'export PATH="/usr/local/cuda-9.2/bin:$PATH"' >> ~/.bashrc
 	source ~/.bashrc
 	
-You can verify the installation of CUDA 8.0 by running:
+You can verify the installation of CUDA version by running:
 
 	nvcc -V
 	
-#### NOTE: The procedure for installing CUDA 9.0 will be similiar as above.
+#### NOTE: The procedure for installing CUDA 10.0 will be similiar as above
 	
 ## 4. Install cuDNN
 CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural network computations. It is written using the CUDA API.
 
-Go to official cuDNN website [official cuDNN website](https://developer.nvidia.com/cudnn)  and fill out the form for downloading the cuDNN library. You should download the “cuDNN v6.0 Library for Linux” under CUDA 8.0 from the options.
+Go to official cuDNN website [official cuDNN website](https://developer.nvidia.com/cudnn)  and fill out the form for downloading the cuDNN library. 
+*At the time of writing this document, the latest stable version is CuDNN 7.4*
+**Make sure you download the correct CuDNN version which matched with you CUDA version**
 
-![](https://github.com/heethesh/Install-TensorFlow-OpenCV-GPU-Ubuntu-17.10/blob/master/images/img2.png) 
+![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png) 
 
 Now, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following.
 
-	tar xvf cudnn-8.0-linux-x64-v6.0.tgz
-	sudo cp -P cuda/lib64/* /usr/local/cuda-8.0/lib64/
-	sudo cp cuda/include/* /usr/local/cuda-8.0/include/
-	sudo chmod a+r /usr/local/cuda-8.0/include/cudnn.h
+	tar xvf cudnn-8.0-linux-x64-v7.4.tgz
+	sudo cp -P cuda/lib64/* /usr/local/cuda-9.2/lib64/
+	sudo cp cuda/include/* /usr/local/cuda-9.2/include/
+	sudo chmod a+r /usr/local/cuda-9.2/include/cudnn.h
 	
 To check installation of cuDNN, run this in your terminal:
 	
@@ -98,8 +102,6 @@ To check installation of cuDNN, run this in your terminal:
 	function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
 	check libcudnn 
 	
-#### NOTE: The procedure for setting up CuDNN 7.0 will be similiar as above.
-
 ## 5. Python and Other Dependencies
 Now, we install Tensorflow, Keras and Theano along with other standard Python ML libraries like numpy, scipy, sklearn etc.
 
@@ -107,7 +109,7 @@ Install dependencies of deep learning frameworks:
 
 	sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libhdf5-serial-dev protobuf-compiler libopencv-dev
 
-Next, we install python 2 and 3 along with other important packages like boost, lmdb, glog, blas etc.
+Next, we install Python 2 and 3 along with other important packages like boost, lmdb, glog, blas etc.
 
 	sudo apt-get install -y --no-install-recommends libboost-all-dev doxygen
 	sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev libblas-dev 
@@ -116,6 +118,7 @@ Next, we install python 2 and 3 along with other important packages like boost, 
 	sudo apt-get install -y python-dev python-pip python-nose python-numpy python-scipy python-wheel
 	sudo apt-get install -y python3-dev python3-pip python3-nose python3-numpy python3-scipy python3-wheel
 	
+**NOTE: If you want to use Python3, replace the following pip commands with pip3**
 Before we use pip, make sure you have the latest version of pip.
 
 	sudo pip install --upgrade pip
@@ -133,20 +136,6 @@ Upgrade numpy to the latest version:
 
 **NOTE: If you already have a built &ast;.whl file, skip to next sub-section to install TensorFlow directly using PIP**
 
-First verify that you are using Python 2.7 as default and pip for Python 2.7. Upgrade pip to latest version if you see a warning message. Also verify that you are using numpy version >= 1.14
-
-	python
-	>>> import numpy
-	>>> numpy.__version__
-	>>> Ctrl+D
-	pip --version
-	
-You should be able to see the following output:
-
-	>>> Python 2.7.14 (default, Sep 23 2017, 22:06:14) 
-	>>> '1.14.0'	
-	pip <version> from /usr/lib/python2.7/dist-packages (python 2.7)
-
 Now we will download the TensorFlow repository from GitHub in the */home* folder. Checkout to the latest version of TensorFlow (`r1.5` is used here).
 
 	cd ~
@@ -156,7 +145,7 @@ Now we will download the TensorFlow repository from GitHub in the */home* folder
 	
 You must also install libcupti which for Cuda Toolkit >= 8.0 you do via:
 	
-	sudo apt-get install cuda-command-line-tools-8-0 
+	sudo apt-get install cuda-command-line-tools-9-2 
 	
 For Cuda Toolkit <= 7.5, you install libcupti-dev by invoking the following command:
 	
@@ -195,13 +184,13 @@ The root of the *tensorflow* folder contains a bash script named configure. This
 	cd ~/tensorflow
 	./configure
 
-#### NOTE: Enter the your correct CUDA and CuDNN version below. CUDA 8.0 and CuDNN 6 is used here.
+#### NOTE: Enter the your correct CUDA and CuDNN version below. CUDA 9.2 and CuDNN 7.4 is used here
 
 >Select Python 2.7, no to all additional packages, gcc as compiler (GCC 5.4).
 >
->For CUDA, enter 8.0
+>For CUDA, enter 9.2
 >
->For cuDNN, enter 6
+>For cuDNN, enter 7.4
 >
 >Enter your GPU Compute Capability (Eg: 3.0 or 6.1). Find yout GPU Compute Capability from [here](https://en.wikipedia.org/wiki/CUDA#GPUs_supported).
 >
@@ -290,20 +279,20 @@ First we will install the dependencies:
 	sudo apt-get install -y libopencore-amrnb-dev libopencore-amrwb-dev
 	sudo apt-get install -y x264 v4l-utils
 
-#### NOTE: Checkout to the latest version of OpenCV. 3.4.0 is used here.
+#### NOTE: Checkout to the latest version of OpenCV. 3.4.4 is used here
 
-Download OpenCV 3.4.0:
+Download OpenCV 3.4.4:
 
 	git clone https://github.com/opencv/opencv.git
 	cd opencv
-	git checkout 3.4.0
+	git checkout 3.4.4
 	cd ..
 
-Download OpenCV-contrib 3.4.0:
+Download OpenCV-contrib 3.4.4:
 
 	git clone https://github.com/opencv/opencv_contrib.git
 	cd opencv_contrib
-	git checkout 3.4.0
+	git checkout 3.4.4
 	cd ..
 	
 #### NOTE: Keep the build folder in the same location as it may be required in future to upgrade or uninstall OpenCV
@@ -325,8 +314,12 @@ Configure and generate the MakeFile in */opencv/build* folder (make sure to spec
 	      -D WITH_CUDA=ON \
 	      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
 	      -D BUILD_EXAMPLES=ON ..
+
+#### NOTE: If you are using Python3, you must add the following flag as well
+
+	      -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3 \
 	      
-#### NOTE: If you are using Ubuntu 17 or 18.04, you must add the following flags as well.
+#### NOTE: If you are using Ubuntu 17 or 18.04, you must add the following flags as well
 
 	      -D CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-5 \
 	      -D CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-5 \
@@ -344,6 +337,11 @@ Check installation of OpenCV:
 	>>> cv2.__version__
 	
 Retain the build folder in the same location. This will be required if you want to uninstall OpenCV or upgrade in the future or else the uninstall process might become very tedious.
+
+#### NOTE: If you get any errors with `import cv2`, make sure the `PYTHONPATH` points to the location of `cv2.so` file correctly in your `~/.bashrc` file as follows
+
+	export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+	export PYTHONPATH=/usr/local/lib/python3.5/site-packages:$PYTHONPATH
 
 To uninstall OpenCV:
 
