@@ -38,7 +38,7 @@ Now, to fix the CXX and CC environment variable systemwide, you need to put the 
 ## 2. Install NVIDIA Driver for your GPU
 The NVIDIA drivers will be automatically detected by Ubuntu in *Software and Updates* under *Additional drivers*. Select the driver for your GPU and click apply changes and reboot your system. *You may also select and apply Intel Microcode drivers in this window.*
 
-*At the time of writing this document, the latest stable driver version is 396*
+*At the time of writing this document, the latest stable driver version is 396*.
 
 Run the following command to check whether the driver has installed successfully by running NVIDIA’s System Management Interface (*nvidia-smi*). It is a tool used for monitoring the state of the GPU.
 
@@ -50,7 +50,8 @@ CUDA (Compute Unified Device Architecture) is a parallel computing platform and 
 
 Download the CUDA driver from the official nvidia website [official nvidia website](https://developer.nvidia.com/cuda-92-download-archive). We recommend you download the *deb (local)* version from Installer type as shown in the screenshot below.
 
-*At the time of writing this document, the latest stable version is CUDA 9.2*
+*At the time of writing this document, the latest stable version is CUDA 9.2*.
+
 **NOTE: The following instructions will also work for Ubuntu 17 and 18.04.**
 
 ![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img1.png) 
@@ -84,7 +85,9 @@ You can verify the installation of CUDA version by running:
 CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural network computations. It is written using the CUDA API.
 
 Go to official cuDNN website [official cuDNN website](https://developer.nvidia.com/cudnn)  and fill out the form for downloading the cuDNN library. 
-*At the time of writing this document, the latest stable version is CuDNN 7.4*
+
+*At the time of writing this document, the latest stable version is CuDNN 7.4*.
+
 **Make sure you download the correct CuDNN version which matched with you CUDA version**
 
 ![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png) 
