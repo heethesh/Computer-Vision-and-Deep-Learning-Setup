@@ -122,7 +122,8 @@ Next, we install Python 2 and 3 along with other important packages like boost, 
 	sudo apt-get install -y python-dev python-pip python-nose python-numpy python-scipy python-wheel
 	sudo apt-get install -y python3-dev python3-pip python3-nose python3-numpy python3-scipy python3-wheel
 	
-**NOTE: If you want to use Python3, replace the following pip commands with pip3**
+**NOTE: If you want to use Python3, replace the following pip commands with pip3.**
+
 Before we use pip, make sure you have the latest version of pip.
 
 	sudo pip install --upgrade pip
@@ -226,6 +227,10 @@ If you get an error saying package is not supported for the current platform, ru
 You can make a backup of this .whl file.
 
 	cp /tmp/tensorflow_pkg/tensorflow <TAB> (*.whl) <BACKUP_LOCATION>
+	
+An alternate way to install TensorFlow using pip without building is as follows:
+
+	sudo pip install tensorflow-gpu
 
 Verify that TensorFlow is using the GPU for computation by running the following python script.
 
