@@ -1,6 +1,6 @@
 # Computer Vision  and Deep Learning Setup
 
-Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, Darknet for YOLO, Theano and Keras, OpenCV and NVIDIA drivers, CUDA and cuDNN libraries on Ubuntu 16.04.3, 17.10 and 18.04.
+Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, Darknet for YOLO, Theano and Keras, OpenCV and NVIDIA drivers, CUDA and cuDNN libraries on Ubuntu 16, 17 and 18.
 
 
 ## 1. Install Prerequisites
