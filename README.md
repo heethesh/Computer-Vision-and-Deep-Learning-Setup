@@ -89,13 +89,13 @@ Go to official cuDNN website [official cuDNN website](https://developer.nvidia.c
 
 *At the time of writing this document, the latest stable version is CuDNN 7.4*.
 
-**Make sure you download the correct CuDNN version which matched with you CUDA version**
+**Make sure you download the correct CuDNN version which matches with you CUDA version.**
 
 ![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png) 
 
 Now, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following.
 
-	tar xvf cudnn-8.0-linux-x64-v7.4.tgz
+	tar xvf cudnn-9.2-linux-x64-v7.4.tgz
 	sudo cp -P cuda/lib64/* /usr/local/cuda-9.2/lib64/
 	sudo cp cuda/include/* /usr/local/cuda-9.2/include/
 	sudo chmod a+r /usr/local/cuda-9.2/include/cudnn.h
