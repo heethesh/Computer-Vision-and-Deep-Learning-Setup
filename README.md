@@ -44,7 +44,8 @@ Run the following command to check whether the driver has installed successfully
 
 	nvidia-smi
 	
-	
+#### NOTE: You will have to disable SecureBoot in your BIOS and change boot mode from UEFI to Legacy, else you might face the login loop issue. An alternate way to go about this issue with UEFI systems is to enroll the MOK keys as explained [here](https://gist.github.com/Rambou/c6769caee19b0b9915d8342b86c3ef72).
+
 ## 3. Install CUDA
 CUDA (Compute Unified Device Architecture) is a parallel computing platform and API developed by NVIDIA which utilizes the parallel computing capabilities of the GPUs. In order to use the graphics card, we need to have CUDA drivers installed on our system.
 
