@@ -102,9 +102,7 @@ Now, go to the folder where you have downloaded the “.tgz” file and from the
 	
 To check installation of cuDNN, run this in your terminal:
 	
-	function lib_installed() { /sbin/ldconfig -N -v $(sed 's/:/ /' <<< $LD_LIBRARY_PATH) 2>/dev/null | grep $1; }
-	function check() { lib_installed $1 && echo "$1 is installed" || echo "ERROR: $1 is NOT installed"; }
-	check libcudnn 
+	dpkg -l | grep cudnn
 	
 ## 5. Python and Other Dependencies
 Now, we install Tensorflow, Keras and Theano along with other standard Python ML libraries like numpy, scipy, sklearn etc.
