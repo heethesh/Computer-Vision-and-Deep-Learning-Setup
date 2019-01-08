@@ -2,6 +2,20 @@
 
 Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learning Frameworks like TensorFlow, PyTorch, Darknet for YOLO, Theano, and Keras; build OpenCV; and also setting up NVIDIA drivers, CUDA, cuDNN, TensorRT libraries on Ubuntu 16, 17 and 18.
 
+## Contents
+1. [Install Prerequisites](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#1-install-prerequisites)
+2. [Setup NVIDIA Driver for your GPU](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#2-install-nvidia-driver-for-your-gpu)
+3. [Install CUDA](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#3-install-cuda)
+4. [Install cuDNN](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#4-install-cudnn)
+5. [Install Tensor RT](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#5-install-tensorrt)
+6. [Python and Other Dependencies](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#6-python-and-other-dependencies)
+7. [OpenCV and Contrib Modules](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#7-install-opencv-and-contrib-modules)
+8. [Deep Learning Frameworks](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#8-install-deep-learning-frameworks)
+    - [PyTorch](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#pytorch)
+    - [TensorFlow](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#tensorflow)
+    - [Keras](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#keras)
+    - [Theano](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#theano)
+    - [Darknet for YOLO](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#darknet-for-yolo)
 
 ## 1. Install Prerequisites
 Before installing anything, let us first update the information about the packages stored on the computer and upgrade the already installed packages to their latest versions.
@@ -259,13 +273,13 @@ You can run the commands for installing pip packages `torch` and `torchvision` f
 
 ### TensorFlow
 
-### Quick Install (Not Recommended)
+#### Quick Install (Not Recommended)
 
 A quick way to install TensorFlow using pip without building is as follows. However this is not recomended as we have several specific versions of GPU libraries to improve performance, which may not be available with the pip builds.
 
 	sudo pip3 install tensorflow-gpu
 	 
-### Building TensorFlow from Source
+#### Building TensorFlow from Source
 
 Now we will download the TensorFlow repository from GitHub in the */home* folder. Checkout to the latest version of TensorFlow (`r1.13` is used here).
 
@@ -299,7 +313,7 @@ The root of the *tensorflow* folder contains a bash script named configure. This
 	cd ~/tensorflow
 	./configure
 
-#### NOTE: Enter the your correct CUDA and CuDNN version below. CUDA 10.0 and CuDNN 7.4 is used here
+**NOTE: Enter the your correct CUDA and CuDNN version below. CUDA 10.0 and CuDNN 7.4 is used here**
 
 >Select Python 3, no to all additional packages, gcc as compiler (GCC 5.4).
 >
