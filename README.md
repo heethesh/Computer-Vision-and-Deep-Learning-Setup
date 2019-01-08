@@ -177,7 +177,7 @@ Before we use pip, make sure you have the latest version of pip.
 
 Now, we can install all the required python packages for deep learning frameworks:
 
-	sudo pip3 install numpy matplotlib ipython protobuf jupyter
+	sudo pip3 install numpy matplotlib ipython protobuf jupyter mock
 	sudo pip3 install scipy scikit-image scikit-learn
 	sudo pip3 install keras_applications==1.0.6 --no-deps
 	sudo pip3 install keras_preprocessing==1.0.5 --no-deps
