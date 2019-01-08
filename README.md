@@ -7,7 +7,7 @@ Tutorial on how to setup your system with a NVIDIA GPU and to install Deep Learn
 2. [Setup NVIDIA Driver for your GPU](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#2-install-nvidia-driver-for-your-gpu)
 3. [Install CUDA](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#3-install-cuda)
 4. [Install cuDNN](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#4-install-cudnn)
-5. [Install Tensor RT](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#5-install-tensorrt)
+5. [Install TensorRT](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#5-install-tensorrt)
 6. [Python and Other Dependencies](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#6-python-and-other-dependencies)
 7. [OpenCV and Contrib Modules](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#7-install-opencv-and-contrib-modules)
 8. [Deep Learning Frameworks](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/README.md#8-install-deep-learning-frameworks)
@@ -108,18 +108,26 @@ CUDA Deep Neural Network (cuDNN) is a library used for further optimizing neural
 
 Go to official cuDNN website [official cuDNN website](https://developer.nvidia.com/cudnn) and fill out the form for downloading the cuDNN library. 
 
-*At the time of writing this document, the latest stable version is CuDNN 7.4*.
+*At the time of writing this document, the latest stable version is cuDNN 7.4*.
 
 **Make sure you download the correct cuDNN version which matches with you CUDA version.**
 
-![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png) 
+![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png)
 
-Now, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following (update the filename).
+### Installing from Debian Package (Recommended Method)
+Install the downloaded packages (Runtime Library, Developer Library and Code Samples) as follows.
 
-	tar xvf cudnn-10.0-linux-x64-v7.4.tgz
-	sudo cp -P cuda/lib64/* /usr/local/cuda-10.0/lib64/
-	sudo cp cuda/include/* /usr/local/cuda-10.0/include/
-	sudo chmod a+r /usr/local/cuda-10.0/include/cudnn.h
+	sudo dpkg -i libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb
+	sudo dpkg -i libcudnn7-dev_7.4.2.24-1+cuda10.0_amd64.deb
+	sudo dpkg -i libcudnn7-doc_7.4.2.24-1+cuda10.0_amd64.deb
+
+### Installing from TAR file
+For cuDNN downloaded using _cuDNN Library for Linux_ method, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following (update the filename).
+
+	tar -xzvf cudnn-10.0-linux-x64-v7.4.2.24.tgz
+	sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+	sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 	
 To check installation of cuDNN, run this in your terminal:
 	
