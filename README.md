@@ -114,20 +114,20 @@ Go to official cuDNN website [official cuDNN website](https://developer.nvidia.c
 
 ![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img2.png)
 
-### Installing from Debian Package (Recommended Method)
-Install the downloaded packages (Runtime Library, Developer Library and Code Samples) as follows.
-
-	sudo dpkg -i libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb
-	sudo dpkg -i libcudnn7-dev_7.4.2.24-1+cuda10.0_amd64.deb
-	sudo dpkg -i libcudnn7-doc_7.4.2.24-1+cuda10.0_amd64.deb
-
-### Installing from TAR file
+### Installing from TAR file (Recommended Method)
 For cuDNN downloaded using _cuDNN Library for Linux_ method, go to the folder where you have downloaded the “.tgz” file and from the command line execute the following (update the filename).
 
 	tar -xzvf cudnn-10.0-linux-x64-v7.4.2.24.tgz
 	sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 	sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 	sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+### Installing from Debian Package 
+Install the downloaded packages (Runtime Library, Developer Library and Code Samples) as follows.
+
+	sudo dpkg -i libcudnn7_7.4.2.24-1+cuda10.0_amd64.deb
+	sudo dpkg -i libcudnn7-dev_7.4.2.24-1+cuda10.0_amd64.deb
+	sudo dpkg -i libcudnn7-doc_7.4.2.24-1+cuda10.0_amd64.deb
 	
 To check installation of cuDNN, run this in your terminal:
 	
