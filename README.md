@@ -92,6 +92,7 @@ Download the CUDA driver from the [official nvidia website here](https://develop
 *At the time of writing this document, the latest stable version is CUDA 10.0*.
 
 ![](https://github.com/heethesh/Computer-Vision-and-Deep-Learning-Setup/blob/master/images/img1.png)
+
 After downloading the file, go to the folder where you have downloaded the file and run the following commands from the terminal to install the CUDA drivers. Please make sure that the filename used in the command below is the same as the downloaded file and replace the `<version>` number.
 
     sudo dpkg -i cuda-repo-ubuntu1604-10-0-local-10.0.130-410.48_1.0-1_amd64.deb
