@@ -27,28 +27,6 @@ Next, we will install some basic packages which we might need during the install
 
     sudo apt-get install -y build-essential cmake gfortran git pkg-config 
 
-**NOTE: The following instructions are only for Ubuntu 17 and 18. Skip to the next section if you have Ubuntu 16.04**
-    
-The defualt *gcc* vesrion on Ubuntu 17 and 18.04 is *gcc-7*. However, when we build OpenCV from source with CUDA support, it requires *gcc-5*. 
-
-    sudo apt-get install gcc-5 g++-5
-    
-Verify the *gcc* version:
-
-    gcc --version
-    
-You may stil see version 7 detected. We have to set higher priority for *gcc-5* as follows (assuming your *gcc* installation is located at */usr/bin/gcc-5*, and *gcc-7*'s priority is less than 60.
-
-    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 60
-    
-Now, to fix the CXX and CC environment variable system-wide, you need to put the lines in your .bashrc file:
-
-    echo 'export CXX=/usr/bin/g++-5.4' >> ~/.bashrc
-    echo 'export CC=/usr/bin/gcc-5.4' >> ~/.bashrc
-    source ~/.bashrc
-
-
 ## 2. Install NVIDIA Driver for your GPU
 Before installing the NVIDIA driver, make sure **Secure Boot** is **Disabled** in BIOS and **Legacy Boot** is selected and **UEFI Boot** is disabled. 
 
